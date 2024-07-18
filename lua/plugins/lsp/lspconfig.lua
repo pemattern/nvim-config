@@ -40,6 +40,12 @@ return {
 
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function ()
+          vim.lsp.buf.format()
+        end,
+      })
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -48,18 +54,22 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
-	Lua = {
-	  diagnostics = {
-	    globals = { "vim" },
-	  },
-	  workspace = {
-	    library = {
-	      [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-	      [vim.fn.stdpath("config") .. "/lua"] = true,
-	    },
-	  },
-	},
+	      Lua = {
+	        diagnostics = {
+	          globals = { "vim" },
+	        },
+	        workspace = {
+	          library = {
+	            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+	            [vim.fn.stdpath("config") .. "/lua"] = true,
+	          },
+	        },
+	      },
       },
+    })
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
     })
   end,
 }
