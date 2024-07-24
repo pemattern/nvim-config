@@ -12,6 +12,10 @@ return {
       ensure_installed = {
         "lua_ls",
         "rust_analyzer",
+        "tsserver",
+        "tailwindcss",
+        "eslint",
+        "marksman",
       },
       automatic_installation = true,
     })

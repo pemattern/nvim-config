@@ -43,8 +43,8 @@ return {
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         callback = function()
-          vim.lsp.buf.format()
-        end,
+          vim.lsp.buffer.format()
+        end
       })
     end
 
@@ -68,6 +68,22 @@ return {
       },
     })
     lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["tailwindcss"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["marksman"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
