@@ -1,6 +1,9 @@
 return {
   "folke/trouble.nvim",
-  opts = {},
+  opts = {
+    multiline = true,
+    use_diagnostics_signs = true,
+  },
   cmd = "Trouble",
   keys = {
     {
