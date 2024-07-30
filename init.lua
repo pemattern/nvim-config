@@ -36,4 +36,31 @@ vim.api.nvim_set_hl(0, 'Operator', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, 'Special', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, '@variable', { ctermfg = 15 })
 
+
+-- Setup diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '▎',
+    spacing = 4,
+  },
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    source = true,
+    border = 'single',
+  },
+})
+
+local signs = { Error = " ", Warn = " ", Hint = "󰟷 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.cmd [[
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]]
+
 require("config.lazy")
