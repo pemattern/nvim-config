@@ -16,6 +16,7 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
+        ["<Tab>"] = cmp.mapping.confirm({ select = false }),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       sources = cmp.config.sources({
