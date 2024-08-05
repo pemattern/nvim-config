@@ -1,8 +1,8 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
   opts = {
-    indent = { char = "│", highlight = "Comment" },
-    scope = { char = "│", highlight = "Special", show_start = false, show_end = false },
+    indent = { char = "▏" },
+    scope = { enabled = false },
   },
   main = "ibl",
   config = function(_, opts)
