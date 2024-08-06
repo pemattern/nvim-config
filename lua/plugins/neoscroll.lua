@@ -1,10 +1,10 @@
 return {
   "karb94/neoscroll.nvim",
-  config = function ()
+  config = function()
     require('neoscroll').setup({
       hide_cursor = true,
       stop_oef = true,
-      easing = 'cubic',
+      easing = 'linear',
     })
   end
 }
