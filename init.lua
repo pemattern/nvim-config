@@ -16,6 +16,7 @@ vim.o.cursorline = true
 vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 
 -- Set highlight groups
+vim.api.nvim_set_hl(0, 'Normal', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, 'LineNr', { ctermfg = 7 })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { ctermbg = 15, ctermfg = 8 })
 vim.api.nvim_set_hl(0, 'CursorLine', { reverse = true })
