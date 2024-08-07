@@ -37,7 +37,6 @@ vim.api.nvim_set_hl(0, 'Operator', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, 'Special', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, '@variable', { ctermfg = 15 })
 
-
 -- Setup diagnostics
 vim.diagnostic.config({
   virtual_text = {
@@ -63,5 +62,22 @@ end
 vim.cmd [[
   autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]]
+
+local border = {
+  { "┌", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "┐", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "┘", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "└", "FloatBorder" },
+  { "│", "FloatBorder" }
+}
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = border
+  }
+)
 
 require("config.lazy")
