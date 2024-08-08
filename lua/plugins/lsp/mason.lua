@@ -16,6 +16,7 @@ return {
         "tailwindcss",
         "eslint",
         "marksman",
+        "taplo",
       },
       automatic_installation = true,
     })
