@@ -3,17 +3,14 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
     local nvimtree = require("nvim-tree")
-
-    -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-
     nvimtree.setup({
+      on_attach = custom_on_attach,
       view = {
         width = 40,
         relativenumber = false,
       },
-      -- change folder arrow icons
       renderer = {
         indent_markers = {
           enable = true,
@@ -21,8 +18,8 @@ return {
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = "│", -- arrow when folder is closed
-              arrow_open = "└", -- arrow when folder is open
+              arrow_closed = "│",
+              arrow_open = "└",
             },
           },
         },
@@ -42,11 +39,11 @@ return {
         ignore = false,
       },
     })
-
     local keymap = vim.keymap
     keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
     keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
     keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
     keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+    keymap.set("n", "o", require('nvim-tree.api').node.open.edit)
   end
 }
