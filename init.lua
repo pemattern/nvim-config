@@ -15,6 +15,7 @@ vim.o.cursorline = true
 
 -- set keybinds
 vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<CR>', '^m`i<Enter><Esc>``A', { noremap = true, silent = true })
 
 -- Set highlight groups
 vim.api.nvim_set_hl(0, 'Normal', { ctermfg = 15 })
