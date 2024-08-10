@@ -2,11 +2,15 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "onsails/lspkind-nvim",
   },
   config = function()
     local cmp = require("cmp")
+    local lspkind = require("lspkind")
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect"
@@ -23,6 +27,7 @@ return {
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
+        { name = "cmdline" },
       }),
       window = {
         completion = cmp.config.window.bordered({
@@ -33,6 +38,13 @@ return {
           border = 'single'
         }),
       },
+      formatting = {
+        format = lspkind.cmp_format({
+          with_text = true,
+          maxwidth = 32,
+          ellipsis_char = "...",
+        })
+      }
     })
   end
 }
