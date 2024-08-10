@@ -18,8 +18,8 @@ vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<C
 vim.api.nvim_set_keymap('n', '<CR>', '^m`i<Enter><Esc>``A', { noremap = true, silent = true })
 
 -- Set highlight groups
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { ctermfg = 15, ctermbg = 5 })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { ctermbg = 3, ctermfg = 0 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { ctermfg = 15, ctermbg = 2 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { ctermfg = 15, ctermbg = 1 })
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { ctermbg = 4 })
 vim.api.nvim_set_hl(0, 'MiniStatuslineDevinfo', { ctermfg = 0, ctermbg = 15 })
 vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { ctermfg = 0, ctermbg = 15 })
