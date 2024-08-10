@@ -1,6 +1,6 @@
 -- Set general options
 vim.o.termguicolors = false
-vim.o.scrolloff = 8
+vim.o.scrolloff = 12
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
@@ -18,6 +18,11 @@ vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<C
 vim.api.nvim_set_keymap('n', '<CR>', '^m`i<Enter><Esc>``A', { noremap = true, silent = true })
 
 -- Set highlight groups
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { ctermfg = 15, ctermbg = 5 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { ctermbg = 3, ctermfg = 0 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { ctermbg = 4 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineDevinfo', { ctermfg = 0, ctermbg = 15 })
+vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { ctermfg = 0, ctermbg = 15 })
 vim.api.nvim_set_hl(0, 'Normal', { ctermfg = 15 })
 vim.api.nvim_set_hl(0, 'LineNr', { ctermfg = 7 })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { ctermbg = 15, ctermfg = 8 })
@@ -25,6 +30,7 @@ vim.api.nvim_set_hl(0, 'CursorLine', { reverse = true })
 vim.api.nvim_set_hl(0, 'PMenu', { ctermfg = 15, ctermbg = 4 })
 vim.api.nvim_set_hl(0, 'PMenuSel', { ctermbg = 8, underline = false })
 vim.api.nvim_set_hl(0, 'PMenuThumb', { ctermbg = 12, ctermfg = 4 })
+vim.api.nvim_set_hl(0, 'StatusLine', { underline = false, ctermbg = 'none' })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { underline = false })
 vim.api.nvim_set_hl(0, 'Keyword', { ctermfg = 13 })
 vim.api.nvim_set_hl(0, 'String', { ctermfg = 10 })
@@ -64,7 +70,14 @@ vim.cmd [[
   autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]]
 
-local border = {
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "NvimTree",
+  callback = function()
+    vim.b.ministatusline_disable = true
+  end,
+})
+
+local border                           = {
   { "┌", "FloatBorder" },
   { "─", "FloatBorder" },
   { "┐", "FloatBorder" },
@@ -80,5 +93,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     border = border
   }
 )
+
 
 require("config.lazy")
