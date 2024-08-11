@@ -38,6 +38,11 @@ return {
           border = 'single'
         }),
       },
+      view = {
+        entries = {
+          follow_cursor = true,
+        },
+      },
       formatting = {
         format = lspkind.cmp_format({
           with_text = true,
