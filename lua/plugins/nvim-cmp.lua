@@ -5,7 +5,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
+    -- "hrsh7th/cmp-cmdline",
     "onsails/lspkind-nvim",
   },
   config = function()
@@ -24,15 +24,15 @@ return {
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = "cmdline" },
+        { name = "nvim_lsp", priority = 1000 },
+        { name = "buffer",   priority = 500 },
+        { name = "path",     priority = 250 },
+        -- { name = "cmdline", priority = 100 },
       }),
       window = {
         completion = cmp.config.window.bordered({
           border = 'single',
-          max_item_count = 10,
+          max_height = 10,
         }),
         documentation = cmp.config.window.bordered({
           border = 'single'
