@@ -15,6 +15,8 @@ vim.o.cursorline = true
 
 -- set keybinds
 vim.api.nvim_set_keymap('n', '<CR>', '^m`i<Enter><Esc>``A', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', function() require('lsp_signature').toggle_float_win() end,
+  { silent = true, noremap = true })
 
 -- Set highlight groups
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { ctermfg = 15, ctermbg = 2 })
